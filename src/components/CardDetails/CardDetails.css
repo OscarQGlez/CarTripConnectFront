@@ -1,0 +1,47 @@
+.cardDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box-search {
+    margin-top: 3%;
+    border: 2px solid green;
+    width: 1500px;
+    height: 66px;
+}
+
+.box-cards {
+    margin-top: 10%;
+    border: 2px solid green;
+    width: 1500px;
+    height: 1500px;
+}
+box {
+    width: 600px;
+    height: 60px;
+    
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.cantidad-personas {
+    margin-left: 400px;
+}
+
+.btn-search {
+    margin-left: 60px;
+    box-shadow: 3px 4px 0px 0px #899599;
+    background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+    background-color: #ededed;
+    border-radius: 10px;
+    border: 2px solid #d6bcd6;
+    display: inline-block;
+    cursor: pointer;
+    color: #3a8a9e;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 4px 32px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #e1e2ed;
+}
