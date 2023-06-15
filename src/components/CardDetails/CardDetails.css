@@ -6,17 +6,16 @@
 
 .box-search {
     margin-top: 3%;
-    border: 2px solid green;
     width: 1500px;
     height: 66px;
 }
 
 .box-cards {
-    margin-top: 10%;
-    border: 2px solid green;
+    margin-top: 2%;
     width: 1500px;
-    height: 1500px;
+    height: 400px;
 }
+
 box {
     width: 600px;
     height: 60px;
@@ -34,7 +33,7 @@ box {
     box-shadow: 3px 4px 0px 0px #899599;
     background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
     background-color: #ededed;
-    border-radius: 10px;
+    border-radius: 6px;
     border: 2px solid #d6bcd6;
     display: inline-block;
     cursor: pointer;
@@ -42,6 +41,19 @@ box {
     font-family: Arial;
     font-size: 20px;
     padding: 4px 32px;
-    text-decoration: none;
+    text-shadow: 0px 1px 0px #e1e2ed;
+}
+.btn-back {
+    margin-top: 32%;
+    background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+    background-color: #db9d9d;
+    border-radius: 6px;
+    border: 2px solid #c792c7;
+    display: inline-block;
+    cursor: pointer;
+    color: #3a8a9e;
+    font-family: Arial;
+    font-size: 22px;
+    padding: 4px 32px;
     text-shadow: 0px 1px 0px #e1e2ed;
 }

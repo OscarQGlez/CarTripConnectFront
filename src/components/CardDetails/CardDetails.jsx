@@ -11,7 +11,7 @@ const [visible, setVisible] = useState('false')
 
 const showData = ()=> {
     return (
-        <div>Hola</div>
+        <h1>Su búsqueda</h1>
     )
 }
 const handleSearch = () => {
@@ -49,11 +49,16 @@ const handleSearch = () => {
 
                     </Toolbar>
                 </AppBar>
+                    <div className='btn-back'>
+                        <a href="#" className='myButton' onClick={ handleSearch }>Atrás</a>
+                    </div>
+
+
             </div>
 
-            <div className='box-cards'>
+            <h1 className='box-cards'>
                 {visible ? 'No hay datos' : showData()}
-            </div>
+            </h1>
         </div>
     </>
   )
