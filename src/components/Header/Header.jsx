@@ -39,12 +39,13 @@ function Header() {
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
+    <AppBar position="static" sx={{backgroundColor: "#6e00ee"}}>
+      <Container maxWidth="fixed">
+        <Toolbar >
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+
           <Typography
-            variant="h6"
+            variant="h5"
             noWrap
             component="a"
             href="/"
@@ -72,7 +73,8 @@ function Header() {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
+
+            <Menu 
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -87,7 +89,7 @@ function Header() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none'  },
               }}
             >
               {pages.map((page) => (
@@ -96,7 +98,9 @@ function Header() {
                 </MenuItem>
               ))}
             </Menu>
+
           </Box>
+          
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
@@ -116,7 +120,7 @@ function Header() {
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end',paddingRight:"20px" }}>
             {pages.map((page) => (
               <Button
                 key={page}
@@ -128,12 +132,13 @@ function Header() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0}}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
+
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"

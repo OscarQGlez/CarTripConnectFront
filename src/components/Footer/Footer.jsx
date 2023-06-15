@@ -43,7 +43,7 @@ function Footer() {
   return (
     <footer >
         <Box sx={{ flexGrow: 1, position: 'absolute', bottom:0, width:'100%'}}>
-            <Box bgcolor="rgb(5, 207, 140)" color="white" padding={2}>
+            <Box bgcolor="rgb(110,0,238)" color="white" padding={2}>
                 <Container>
                 <Grid container columnSpacing={3}>
                     {generateFooterElements()}
@@ -51,7 +51,7 @@ function Footer() {
                 </Container>
             </Box>
 
-            <Box  textAlign={'center'} py={1} m={0} bgcolor="black" color={'white'}>
+            <Box  textAlign={'center'} py={1} m={0} bgcolor="#6e00ee" color={'white'}>
                 <Typography sx={{'fontSize': '12px',padding: 0 }}>© Car Trip Connect 2023 - All Rights Reserved</Typography>
             </Box>
 
