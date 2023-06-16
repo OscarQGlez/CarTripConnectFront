@@ -33,8 +33,7 @@ function Signup() {
         display: "flex",
         flexDirection: "column",
         paddingTop: "100px",
-        alignItems: "center",
-        height: "100vh",
+        alignItems: "center",        
         width: "100vw",
       }}
     >
