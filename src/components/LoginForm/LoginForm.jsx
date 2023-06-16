@@ -41,7 +41,7 @@ function LoginForm() {
 
   return (
     <Card sx={{
-      height: '450px',
+      height: '350px',
       width: '450px',
       margin: '20px auto',
       padding: '60px 68px 40px',
