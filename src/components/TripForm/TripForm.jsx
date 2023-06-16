@@ -33,14 +33,20 @@ function TripForm() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        paddingTop:"70px",
+        paddingTop: "70px",
         alignItems: "center",
         height: "100vh",
-        width: "100vw"
+        width: "100vw",
       }}
-    >      
-      <CardHeader title="Create Trip" />
-      <CardContent sx={{display: 'flex', justifyContent: 'center', alignContent: 'center'}}>
+    >
+      <CardHeader title="Publish a trip" />
+      <CardContent
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignContent: "center",
+        }}
+      >
         <Box sx={{ width: "50%" }}>
           <Grid
             container
@@ -57,7 +63,7 @@ function TripForm() {
               xs={6}
             >
               <TextField
-              fullWidth={true}
+                fullWidth={true}
                 sx={{ width: "50%" }}
                 id="outlined-basic"
                 label="Date"
@@ -198,11 +204,11 @@ function TripForm() {
           </Grid>
         </Box>
       </CardContent>
-          <CardActions>
-            <Button variant="contained" color="error" sx={{ width: "100%" }}>
-              Crear viaje{" "}
-            </Button>
-          </CardActions>
+      <CardActions>
+        <Button variant="contained" color="secondary" sx={{ width: "100%" }}>
+          Publish a trip{" "}
+        </Button>
+      </CardActions>
     </Card>
   );
 }
