@@ -11,7 +11,6 @@ function Root() {
     <div className='layout'>
         <Header />
         <Outlet/>
-        <TripDetails/>
         <Footer/>
     </div>
   )
