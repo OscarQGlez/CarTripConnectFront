@@ -6,7 +6,8 @@ import CreateTrips from "../pages/CreateTrips/CreateTrips";
 import Signup from "../pages/Signup/Signup";
 import LoginPage from "../pages/LoginPage/LoginPage"
 import TripDetails from "../pages/TripDetails/TripDetails";
-import SearchPages from "../pages/SearchPages/SearchPages";
+import SearchTrip from "../pages/SearchTrip/SearchTrip";
+import ProfilePage from "../pages/ProfilePage/ProfilePage";
 
 export const router = createBrowserRouter([
   // { path: '/', element: <App/>}
@@ -20,7 +21,8 @@ export const router = createBrowserRouter([
       { path: "/signup", element: <Signup /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/tripdetail", element: <TripDetails /> },
-      { path: "/searchpages", element: <SearchPages /> }
+      { path: "/searchtrip", element: <SearchTrip /> },
+      { path: "/profilepage", element: <ProfilePage/> }
     ],
   },
 ]);

@@ -1,9 +1,15 @@
 import React from 'react'
+import Avatar from "@mui/material/Avatar";
+import Stack from "@mui/material/Stack";
 
-function ProfilePage() {
+
+function Profile() {
   return (
-    <div>ProfilePage</div>
-  )
+    <Stack direction="row" >
+      <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+    
+    </Stack>
+  );
 }
 
-export default ProfilePage
+export default Profile
