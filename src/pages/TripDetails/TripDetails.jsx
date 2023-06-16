@@ -16,16 +16,16 @@ function TripDetails() {
           </div>
 
           <div className='card'>
-            <p className='text'>Fecha: {Data.date}</p>
-            <p className='text'>Hora de Salida: {Data.departure_time}</p>
-            <p className='text'>Hora de LLegada: {Data.arrival_time}</p>
-            <p className='text'>Inicio de viaje: {Data.origin}</p>
-            <p className='text'>Destino de viaje: {Data.destination}</p>
-            <p className='text'>Importe por pasajero: {Data.Price}</p>
-            <p className='text'>Nombre del chofer:{Data.driver_name}</p>
-            <p className='text'>Puntuación: {Data.score}</p>
-            <p className='text'>Perfil: {Data.profile}</p>
-            <p className='text'>Asientos disponibles: {Data.available_seats}</p>
+            <p className='text'>Fecha: {Data[0].date}</p>
+            <p className='text'>Hora de Salida: {Data[0].departure_time}</p>
+            <p className='text'>Hora de LLegada: {Data[0].arrival_time}</p>
+            <p className='text'>Inicio de viaje: {Data[0].origin}</p>
+            <p className='text'>Destino de viaje: {Data[0].destination}</p>
+            <p className='text'>Importe por pasajero: {Data[0].Price}</p>
+            <p className='text'>Nombre del chofer:{Data[0].driver_name}</p>
+            <p className='text'>Puntuación: {Data[0].score}</p>
+            <p className='text'>Perfil: {Data[0].profile}</p>
+            <p className='text'>Asientos disponibles: {Data[0].available_seats}</p>
           </div>
             
             <div className='btn-continue'>

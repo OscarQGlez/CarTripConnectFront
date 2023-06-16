@@ -12,7 +12,7 @@ const [visible, setVisible] = useState('false')
 
 const showData = ()=> {
     return (
-        <h1>Su búsqueda</h1>
+        <TripDetails/>
     )
 }
 const handleSearch = () => {
@@ -57,9 +57,9 @@ const handleSearch = () => {
 
             </div>
 
-            <h1 className='box-cards'>
+            <div className='box-cards'>
                 {visible ? 'No hay datos' : showData()}
-            </h1>
+            </div>
         </div>
     </>
   )
