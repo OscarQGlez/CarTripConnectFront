@@ -1,10 +1,45 @@
-import { Box, Button, Card, CardActions, CardContent, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Button, Card, CardActions, CardContent, IconButton, TextField, Typography } from '@mui/material'
+//import React from 'react'
 import CustomTextField from '../CustomTextField/CustomTextField'
+import { useState } from 'react'
+import {login} from '../../services/auth.service'
+import { Email, Lock, Visibility, VisibilityOff } from '@mui/icons-material'
+
 
 function LoginForm() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [isPassVisible, setIsPassVisible] = useState (false)
+
+
+  const handleEmail = (e) => {
+    console.log(e.target.value)
+    setEmail(e.target.value)
+  }
+
+  const handlePassword = (e) => {
+    console.log(e.target.value)
+
+    setPassword(e.target.value)
+    
+  }
+  
+  function handleClickVisibility (){
+    setIsPassVisible (!isPassVisible)
+  }
+
+  // function logIn (){
+  //   console.log("<<<<<<<<<<<<<<<<<<sign in")
+  // }
+
+  const logIn = async () => {
+    await login(email, password)
+    if (!localStorage.getItem('token')) alert('Error: Usario o contraseña invalidos')
+    //else navigate('/dashboard')
+  }
+
+
   return (
-    //<h1>En la pagina de login PAge redirido al componente LoginForm</h1>
     <Card sx={{
       height: '450px',
       width: '450px',
@@ -16,22 +51,49 @@ function LoginForm() {
 
       <CardContent>
         <Typography align='center' variant="h4" component="div">
-          Login
+          Log in
         </Typography>
 
         <Box sx={{ marginTop: '20px'}}>
-          <CustomTextField fullWidth label="Email" variant="outlined" />
-          <CustomTextField fullWidth label="Password" variant="outlined" />
+          <TextField 
+          fullWidth 
+          margin='dense' 
+          label="Email" 
+          variant="outlined" 
+          InputProps={{ startAdornment: <Email/> }}
+          onChange={handleEmail}>
+
+          </TextField>
+
+
+          <TextField 
+            fullWidth
+            margin='dense' 
+            type={isPassVisible ? 'text':'password'}
+            label="Password"
+            variant="outlined" 
+            InputProps={{ 
+              startAdornment:<Lock/>,
+              endAdornment: (
+              <IconButton onClick = {(e) => handleClickVisibility()}>
+                {isPassVisible ? <Visibility/>:<VisibilityOff/>}
+              </IconButton>
+              )
+            }}
+            onChange={handlePassword}
+            ></TextField>
+            
+
         </Box>
       </CardContent>
 
       <CardActions>
-        <Button variant="contained" color="error" sx={{ width: '100%'}}> Sign In</Button>
+        <Button variant="contained" color="secondary" sx={{ width: '100%'}} onClick={logIn}> Log In</Button>
       </CardActions>
 
 
       <Typography sx={{display: "flex", justifyContent: "center"}} variant="h8" >
-        Already have an account? Sign in
+        Already have an account? Sign Up
       </Typography>
     </Card>
   )

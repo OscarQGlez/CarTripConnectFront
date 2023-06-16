@@ -8,7 +8,7 @@ function CustomTextField({ label, variant }) {
       fullWidth 
       label={label} 
       variant={variant} 
-      sx={{ backgroundColor: 'gray', margin: '10px 0' }} />
+      sx={{ margin: '10px 0' }} />
     </>
   )
 }
