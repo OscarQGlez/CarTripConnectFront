@@ -39,7 +39,7 @@ function Header() {
   };
 
   return (
-    <AppBar position="static" sx={{backgroundColor: "#6e00ee"}}>
+    <AppBar position="static" color="primary">
       <Container maxWidth="fixed">
         <Toolbar >
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
