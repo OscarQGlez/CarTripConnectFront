@@ -10,7 +10,7 @@ function Root() {
     <div>
         <Header />
         <Outlet/>
-        <CardDetails/>
+      
         <TripDetails/>
         <Footer/>
     </div>
