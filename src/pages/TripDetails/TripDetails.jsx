@@ -11,11 +11,12 @@ function TripDetails() {
       <div className='tripBoard'>
         <div className='tripDetails'>
 
-          <div className='date-box'>
-            <h2 className='data-text'>Fecha: {Data.date}</h2>
+          <div className='information'>
+            <h2>Información sobre el viaje</h2> 
           </div>
 
           <div className='card'>
+            <p className='text'>Fecha: {Data.date}</p>
             <p className='text'>Hora de Salida: {Data.departure_time}</p>
             <p className='text'>Hora de LLegada: {Data.arrival_time}</p>
             <p className='text'>Inicio de viaje: {Data.origin}</p>

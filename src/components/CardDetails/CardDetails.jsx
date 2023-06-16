@@ -3,6 +3,7 @@ import './CardDetails.css'
 import { AppBar, Button, TextField, Toolbar, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 import FirstComponent from '../Date/Date'
+import TripDetails from '../../pages/TripDetails/TripDetails'
 
 
 
