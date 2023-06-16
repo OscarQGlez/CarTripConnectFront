@@ -16,12 +16,14 @@ import {
 import { styled } from "@mui/material";
 
 import React from "react";
-
+import {Icon} from "@mui/material";
+import { Email } from "@mui/icons-material";
+import { Lock} from "@mui/icons-material"
 
 function Signup() {
 
       const [name, setName] = useState("");
-      const [Lastname, setlastName] = useState("");
+      const [lastname, setlastName] = useState("");
       const [email, setEmail] = useState("");
       const [password, setPassword] = useState("");
       
@@ -54,12 +56,14 @@ function Signup() {
         id="outlined-basic"
         label="Email"
         variant="outlined"
+        InputProps={{ startAdornment: <Email /> }}
       />
       <TextField
         sx={{ width: "20%", margin: "10px" }}
         id="outlined-basic"
         label="Password"
         variant="outlined"
+        InputProps={{ startAdornment: <Lock /> }}
       />
       <TextField
         sx={{ width: "20%", margin: "10px" }}
