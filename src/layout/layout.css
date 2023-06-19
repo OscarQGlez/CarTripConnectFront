@@ -1,4 +1,5 @@
 .layout {
     height: 100vh;
     overflow: scroll;
+    position: relative;
 }

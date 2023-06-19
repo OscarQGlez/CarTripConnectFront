@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./SearchBar.css"
-import { AppBar, Button, TextField, Toolbar, Typography, CardActions } from '@mui/material'
+import { AppBar, Button, TextField, Toolbar, Typography, CardActions, Box } from '@mui/material'
 import { Link } from 'react-router-dom'
 import FirstComponent from '../Date/Date'
 import TripDetails from '../../pages/TripDetails/TripDetails'
@@ -41,7 +41,7 @@ const handleSearch = () => {
                 <TextField variant="outlined" placeholder="Destination" />
               </Typography>
 
-              <box>
+              <Box className="box">
                 <FirstComponent />
                 <Typography
                   className="cantidad-personas"
@@ -54,27 +54,21 @@ const handleSearch = () => {
                     placeholder="Number of persons"
                   />
                 </Typography>
-              </box>
+              </Box>
 
               <CardActions>
-                <Button
+                  <Button
                   variant="contained"
                   color="secondary"
                   sx={{ width: "100%" }}
                   onClick={handleSearch}
                 >
-                  Publish a trip{" "}
+                  Search{" "}
                 </Button>
               </CardActions>
             </Toolbar>
           </AppBar>
-          <div className="btn-back">
-            <a href="#" className="myButton" onClick={handleSearch}>
-              Atrás
-            </a>
-          </div>
         </div>
-
         <div className="box-cards">{visible ? "No hay datos" : showData()}</div>
       </div>
     </>
