@@ -1,0 +1,17 @@
+.herosection::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(120deg, #eaee44, #33d0ff);
+        opacity: .7;
+        z-index: -1;
+}
+
+.herosection {
+    position: relative;
+    z-index: 0;
+}
+

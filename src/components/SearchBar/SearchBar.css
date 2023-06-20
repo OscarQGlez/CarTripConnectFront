@@ -2,12 +2,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 320px;
 }
 
 .box-search {
     margin-top: 3%;
     width: 1500px;
     height: 66px;
+    z-index: 1;
 }
 
 .box-cards {
@@ -109,7 +111,7 @@
 }
 
 .btn-continue {
-    width: 600px;
+    width: 100%;
     height: 30px;
     margin-top: 10px;
     display:flex;
@@ -123,4 +125,25 @@
     background-color: white;
     width: 600px;
     height: 700px;
+}
+
+.formfield {
+    width: 100%;
+}
+
+button {
+    height: 100%;
+}
+
+.h100 {
+    height: 100%;
+    padding: 0;
+}
+
+.heading {
+    color: #6e01ee!important;
+    font-weight: 600!important;
+    font-size: 48px!important;
+    padding: 30px;
+    height: 100px;
 }

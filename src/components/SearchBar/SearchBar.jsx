@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import "./SearchBar.css"
-import { AppBar, Button, TextField, Toolbar, Typography, CardActions, Box } from '@mui/material'
+import { Button, TextField, Typography, CardActions, Grid, Container, Card } from '@mui/material'
 import { Link } from 'react-router-dom'
-import FirstComponent from '../Date/Date'
+import Calendar from '../Date/Date'
 import TripDetails from '../../pages/TripDetails/TripDetails'
 
 
@@ -23,51 +23,76 @@ const handleSearch = () => {
     <>
       <div className="cardDetails">
         <div className="box-search">
-          <AppBar position="static" sx={{}}>
-            <Toolbar sx={{ backgroundColor: "white" }}>
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ fontSize: "25px", flexGrow: 1 }}
-              >
-                <TextField variant="outlined" placeholder="Origin"></TextField>
-              </Typography>
+          <Container>
+          <Grid container>
+             <Grid item xs={12}>
+             <Typography
+                  component="div"
+                  className='heading'
+                  sx={{textAlign: "Center", color: "black" }}
+                >
+                          <h1>Mejor para el planeta y para tu bolsillo</h1>
 
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ fontSize: "25px", flexGrow: 1 }}
-              >
-                <TextField variant="outlined" placeholder="Destination" />
-              </Typography>
-
-              <Box className="box">
-                <FirstComponent />
+                </Typography>
+             </Grid>
+          </Grid>
+          <Card position="static" sx={{padding:"10px"}}>
+            <Grid container spacing={2} sx={{ backgroundColor: "white" }}>
+              <Grid item xs={3}>
                 <Typography
-                  className="cantidad-personas"
+                  variant="h6"
+                  component="div"
+                  sx={{fontSize: "25px", flexGrow: 1 }}
+                >
+                  <TextField variant="outlined" placeholder="Origin" className='formfield'></TextField>
+                </Typography>
+              </Grid>
+
+              <Grid item xs={3}>
+                <Typography
+                  variant="h6"
+                  component="div"
+                  sx={{ fontSize: "25px", flexGrow: 1 }}
+                >
+                  <TextField variant="outlined" placeholder="Destination" className='formfield'/>
+                </Typography>
+              </Grid>
+
+              <Grid item xs={3}>
+                <Calendar className='formfield'/>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography
+                  className="cantidad-personas formfield"
                   variant="h6"
                   component="div"
                   sx={{ fontSize: "25px", flexGrow: 1 }}
                 >
                   <TextField
+                    className='formfield'
                     variant="outlined"
                     placeholder="Number of persons"
                   />
                 </Typography>
-              </Box>
-
-              <CardActions>
-                  <Button
-                  variant="contained"
-                  color="secondary"
-                  sx={{ width: "100%" }}
-                  onClick={handleSearch}
-                >
-                  Search{" "}
-                </Button>
-              </CardActions>
-            </Toolbar>
-          </AppBar>
+              
+              </Grid>
+              
+              <Grid item xs={2}>
+                <CardActions className="h100" sx={{ width: "100%", height:"100%", padding:"0" }}>
+                    <Button
+                    variant="contained"
+                    color="secondary"
+                    sx={{ width: "100%", height:"100%" }}
+                    className="h100"
+                    onClick={handleSearch}
+                  >
+                    Search{" "}
+                  </Button>
+                </CardActions>
+              </Grid>
+            </Grid>
+          </Card>
+          </Container>
         </div>
         <div className="box-cards">{visible ? "No hay datos" : showData()}</div>
       </div>
