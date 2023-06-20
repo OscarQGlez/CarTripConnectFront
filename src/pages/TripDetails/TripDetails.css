@@ -64,4 +64,5 @@
     background-color: white;
     width: 600px;
     height: 700px;
+    z-index: 1;
 }

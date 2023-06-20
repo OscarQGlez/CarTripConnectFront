@@ -1,6 +1,6 @@
 //import React from 'react'
 
-import { Box, Grid, Container, Typography, Button } from '@mui/material'
+import { Box, Grid, Container, Typography, Button, Paper } from '@mui/material'
 
 function Footer() {
   const elements = [
@@ -30,7 +30,7 @@ function Footer() {
           {column.links.map((link, idx) => {
             return (
               <Box key={idx} sx={{ display: 'flex', justifyContent: 'center' }}>
-                <Button sx={{ color: 'white', 'font-size': '12px', padding: 0 }}>{link}</Button>
+                <Button sx={{ color: 'white', fontsize: '12px', padding: 0 }}>{link}</Button>
               </Box>
             )
           })}
@@ -42,7 +42,7 @@ function Footer() {
 
   return (
     <footer >
-        <Box sx={{ flexGrow: 1, position: 'absolute', bottom:0, width:'100%'}}>
+        <Box>
             <Box bgcolor="rgb(110,0,238)" color="white" padding={2}>
                 <Container>
                 <Grid container columnSpacing={3}>

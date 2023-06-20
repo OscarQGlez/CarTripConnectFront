@@ -16,7 +16,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['New Trip'];
+const pages = ["Publish a trip"];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
@@ -94,7 +94,11 @@ function Header() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">
+                    <Button sx={{ color: 'white', fontWeight: 'bold', padding: 1}}>
+                        {page}
+                      </Button>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -125,7 +129,9 @@ function Header() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                variant="contained"
+                    color="secondary"
+                    sx={{  height:"100%" }}
               >
                 {page}
               </Button>

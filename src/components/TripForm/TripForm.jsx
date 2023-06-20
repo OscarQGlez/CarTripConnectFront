@@ -16,6 +16,7 @@ import {
 import { styled } from "@mui/material";
 
 import React from "react";
+import Calendar from "../Date/Date";
 
 function TripForm() {
   const [date, setDate] = useState("");
@@ -29,6 +30,7 @@ function TripForm() {
 
 
   return (
+    <>
     <Card
       sx={{
         display: "flex",
@@ -39,7 +41,8 @@ function TripForm() {
         width: "100vw",
       }}
     >
-      <CardHeader title="Publish a trip" />
+      <h1>Publicar un viaje </h1>
+
       <CardContent
         sx={{
           display: "flex",
@@ -62,13 +65,7 @@ function TripForm() {
               item
               xs={6}
             >
-              <TextField
-                fullWidth={true}
-                sx={{ width: "50%" }}
-                id="outlined-basic"
-                label="Date"
-                variant="outlined"
-              />
+              <Calendar />
             </Grid>
 
             <Grid
@@ -205,11 +202,12 @@ function TripForm() {
         </Box>
       </CardContent>
       <CardActions>
-        <Button variant="contained" color="secondary" sx={{ width: "100%" }}>
-          Publish a trip{" "}
+        <Button size="large" variant="outlined" color="primary" sx={{ width: "100%" }}>
+          Publicar
         </Button>
       </CardActions>
     </Card>
+    </>
   );
 }
 
