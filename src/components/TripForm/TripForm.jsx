@@ -65,7 +65,7 @@ function TripForm() {
                 item
                 xs={6}
               >
-            <Calendar/>
+            <Calendar size='50%'/>
               </Grid>
 
               <Grid
