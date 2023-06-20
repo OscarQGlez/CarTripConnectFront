@@ -94,7 +94,7 @@ const handleSearch = () => {
           </Card>
           </Container>
         </div>
-        <div className="box-cards">{visible ? "No hay datos" : showData()}</div>
+        
       </div>
     </>
   );
