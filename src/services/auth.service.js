@@ -10,3 +10,13 @@ export const login = async (email, password) => {
     console.error('Cannot log in')
   }
 }
+
+
+export const signup = async (name, email, password) => {
+  try {
+    const { data } = await api.post('/auth/signup', { firstName: name, email, password })
+    localStorage.setItem('token', data.token)
+  } catch (error) {
+    console.error('Something goes wrong', error)
+  }
+}
