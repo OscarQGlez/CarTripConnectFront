@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import {
   Button,
   Card,
@@ -17,16 +17,62 @@ import { styled } from "@mui/material";
 
 import React from "react";
 import Calendar from "../Date/Date";
+import { addtrip } from "../../services/trip.services";
 
 function TripForm() {
   const [date, setDate] = useState("");
   const [departureTime, setDepartureTime] = useState("");
   const [availableSeats, setAvailableSeats] = useState("");
   const [vehicleType, setVehicleType] = useState("");
+
   const [favoriteGenre, setFavoriteGenre] = useState("");
   const [lenguaje, setLenguaje] = useState("");
-  const [petAccepted, setpetAccepted] = useState("");
+  const [petAccepted, setPetAccepted] = useState("");
   const [maximumBaggage, setMaximumBaggage] = useState("");
+  const [drivingSkill, setDrivingSkill]  = useState("");
+
+  const handleDate = (value) => {
+    setDate(value)
+  }
+
+  const handleDepartureTime = (value) => {
+    setDepartureTime(value)
+  }
+
+  const handleAvailableSeats = (value) => {
+    setAvailableSeats(value)
+  }
+
+  const handleVehicleType = (value) => {
+    setVehicleType(value)
+  }
+
+  const handleFavoriteGenre = (value) => {
+    setFavoriteGenre(value)
+  }
+
+  const handleLenguaje = (value) => {
+    setLenguaje(value)
+  }
+
+  const handlePetAccepted = (value) => {
+    setPetAccepted(value)
+  }
+
+  const handleMaximumBaggage = (value) => {
+    setMaximumBaggage(value)
+  }
+
+  const handleDrivingSkill = (value) => {
+    setDrivingSkill(value)
+  }
+
+  const uploadtrip = async () => {
+    const res = await addtrip()
+
+    if(res === 'error') alert('Error uploading movie')
+    else Navigate('/')
+  }
 
 
   return (
@@ -65,7 +111,7 @@ function TripForm() {
                 item
                 xs={6}
               >
-            <Calendar size='50%'/>
+            <Calendar size='50%'onChange={handleDate}/>
               </Grid>
 
               <Grid
@@ -82,6 +128,7 @@ function TripForm() {
                   id="outlined-basic"
                   label="Lenguaje"
                   variant="outlined"
+                  onChange={handleLenguaje}
                 />
               </Grid>
 
@@ -99,6 +146,7 @@ function TripForm() {
                   id="outlined-basic"
                   label="Departure time"
                   variant="outlined"
+                  onChange={handleDepartureTime}
                 />
               </Grid>
 
@@ -116,6 +164,7 @@ function TripForm() {
                   id="outlined-basic"
                   label="Driving skill"
                   variant="outlined"
+                  onChange={handleDrivingSkill}
                 />
               </Grid>
               <Grid
@@ -132,6 +181,7 @@ function TripForm() {
                   id="outlined-basic"
                   label="Avaible seats"
                   variant="outlined"
+                  onChange={handleAvailableSeats}
                 />
               </Grid>
               <Grid
@@ -148,6 +198,7 @@ function TripForm() {
                   id="outlined-basic"
                   label="Pets accepted"
                   variant="outlined"
+                  onChange={handlePetAccepted}
                 />
               </Grid>
               <Grid
@@ -164,6 +215,7 @@ function TripForm() {
                   id="outlined-basic"
                   label="Vehicle type"
                   variant="outlined"
+                  onChange={handleVehicleType}
                 />
               </Grid>
               <Grid
@@ -180,6 +232,7 @@ function TripForm() {
                   id="outlined-basic"
                   label="Maximum baggage"
                   variant="outlined"
+                  onChange={handleMaximumBaggage}
                 />
               </Grid>
               <Grid
@@ -196,17 +249,20 @@ function TripForm() {
                   id="outlined-basic"
                   label="Favorite genre"
                   variant="outlined"
+                  onChange={handleFavoriteGenre}
                 />
               </Grid>
             </Grid>
           </Box>
         </CardContent>
+
         <CardActions>
           <Button
             size="large"
             variant="contained"
             color="secondary"
             sx={{ width: "100%" }}
+            onClick={uploadtrip}
           >
             Publicar
           </Button>
