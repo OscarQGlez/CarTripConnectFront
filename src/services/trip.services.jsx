@@ -32,3 +32,29 @@ export const deletetrip = async (id) => {
       console.error('Error al eliminar un viaje', error)
     }
   }
+
+
+  export const getOrigin = async (originId) => {
+    try {
+      const { data } = await api.get(
+        `/origin/${originId}`,
+        { headers: { token: localStorage.getItem("token") } }
+      );
+      return data;
+    } catch (error) {
+      console.error("error al traer origen", error);
+    }
+  };
+  
+   export const getDestination = async (destinationId) => {
+     try {
+       const { data } = await api.get(
+        `/destination/${destinationId}`,
+        { headers: { token: localStorage.getItem("token") }}
+       );
+       return data;
+     } catch (error) {
+       console.error("error al traer destino", error);
+     }
+   };
+
