@@ -37,14 +37,18 @@ export default function MediaCard({propCard}) {
           <Typography gutterBottom variant="h5" component="div">
             Trip
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ fontSize: "16px" }}
+          >
             <p>{card.origin}</p>
             <p>{card.destination}</p>
             <p>{card.departure_time.slice(0, 5)}</p>
           </Typography>
         </CardContent>
         <CardActions>
-          <Link to='/tripdetail'>
+          <Link to="/tripdetail">
             <Button size="small">View trip</Button>
           </Link>
         </CardActions>

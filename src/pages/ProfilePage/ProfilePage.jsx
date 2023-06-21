@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 import "./ProfilePage.css"
 import image from  "../../assets/img/avatar.png";
+import Rating from "@mui/material/Rating";
+import BasicRating from "./RatingComponent/RatingComponent";
 
 
 
@@ -65,10 +67,11 @@ function ProfilePage() {
             <ListItemText
               primary="Rating"
               primaryTypographyProps={{ fontSize: "16px" }}
-              secondary="10"
+              secondary="2 / 5"
               secondaryTypographyProps={{ fontSize: "20px" }}
             />
           </ListItem>
+          <BasicRating />
         </List>
       </Card>
     </Container>
