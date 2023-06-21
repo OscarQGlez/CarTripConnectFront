@@ -156,10 +156,21 @@ function TripForm() {
                 }}
               >
                 <TextField
-                  sx={{ width: "50%" }}
+                  sx={{ width: "50%", colorScheme:"none" }}
                   id="outlined-basic"
+                  
                   label="Departure time"
                   variant="outlined"
+                  
+                  // type="time"
+                  // defaultValue="08:00"
+                  
+                  // InputLabelProps={{
+                  //   shrink: true,
+                  // }}
+                  // inputProps={{
+                  //   step: 300, // 5 min
+                  // }}
                   onChange={handleDepartureTime}
                 />
               </Grid>
