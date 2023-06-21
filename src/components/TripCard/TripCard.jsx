@@ -30,8 +30,6 @@ export default function MediaCard({propCard}) {
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia
           sx={{ height: 140 }}
-
-
           image="https://unsplash.it/1000/450/?random"
           title="green iguana"
         />
@@ -40,14 +38,15 @@ export default function MediaCard({propCard}) {
             Trip
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <p>{card.origin }</p>
+            <p>{card.origin}</p>
             <p>{card.destination}</p>
             <p>{card.departure_time.slice(0, 5)}</p>
-            
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">View trip</Button>
+          <Link to='/tripdetail'>
+            <Button size="small">View trip</Button>
+          </Link>
         </CardActions>
       </Card>
     </>
