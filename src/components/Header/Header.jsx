@@ -26,8 +26,6 @@ const pages = [
 ];
 const settings = [
   { label:'Profile', link: '/profilepage'}, 
-  { label:'Account', link:'/Account' }, 
-  { label:'Dashboard', link:'/' }, 
   { label:'Logout', link: '/'},
 ];
 
