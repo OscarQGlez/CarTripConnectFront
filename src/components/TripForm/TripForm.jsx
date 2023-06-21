@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+
+import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import {
   Button,
   Card,
@@ -8,55 +10,69 @@ import {
   Box,
   Grid,
   TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+
 } from "@mui/material";
 import { styled } from "@mui/material";
-
 import React from "react";
 import Calendar from "../Date/Date";
 import { addtrip } from "../../services/trip.services";
+// import { getOringin} from "../../services/trip.services"
+// import { getDestination} from "../../services/trip.services"
+
+import { LocalizationProvider, MobileTimePicker, TimePicker } from "@mui/x-date-pickers";
+import dayjs from "dayjs";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 function TripForm() {
   const [date, setDate] = useState("");
-  const [departureTime, setDepartureTime] = useState("");
-  const [availableSeats, setAvailableSeats] = useState("");
-  const [vehicleType, setVehicleType] = useState("");
+  const [departure_time, setdeparture_time] = useState(dayjs('2022-04-17T15:30'));
+  const [available_seats, setavailable_seats] = useState("");
+  const [vehicle_type, setvehicle_type] = useState("");
 
-  const [favoriteGenre, setFavoriteGenre] = useState("");
+  const [favorite_genre, setfavorite_genre] = useState("");
   const [lenguaje, setLenguaje] = useState("");
-  const [petAccepted, setPetAccepted] = useState("");
-  const [maximumBaggage, setMaximumBaggage] = useState("");
+  const [pets_accepted, setpets_accepted] = useState("");
+  const [maximun_baggage, setmaximun_baggage] = useState("");
   const [drivingSkill, setDrivingSkill]  = useState("");
 
+  // const [origin, setorigin]  = useState("");
+  // const [destination, setDestination]  = useState("");
+
   const handleDate = (e) => {
-    setDate(e.target.value)
+    setDate(`${e.$y}-${e.$M+1}-${e.$D}`)
   }
 
-  const handleDepartureTime = (e) => {
-    setDepartureTime(e.target.value)
+  const handledeparture_time = (e) => {
+
+    setdeparture_time(`${e.$H}:${e.$m}`)
   }
 
-  const handleAvailableSeats = (e) => {
-    setAvailableSeats(e.target.value)
+  const handleavailable_seats = (e) => {
+    setavailable_seats(e.target.value)
   }
 
-  const handleVehicleType = (e) => {
-    setVehicleType(e.target.value)
+  const handlevehicle_type = (e) => {
+    setvehicle_type(e.target.value)
   }
 
-  const handleFavoriteGenre = (e) => {
-    setFavoriteGenre(e.target.value)
+  const handlefavorite_genre = (e) => {
+    setfavorite_genre(e.target.value)
   }
 
   const handleLenguaje = (e) => {
     setLenguaje(e.target.value)
   }
 
-  const handlePetAccepted = (e) => {
-    setPetAccepted(e.target.value)
+  const handlepets_accepted = (e) => {
+    setpets_accepted(e.target.value)
   }
 
-  const handleMaximumBaggage = (e) => {
-    setMaximumBaggage(e.target.value)
+  const handlemaximun_baggage = (e) => {
+    setmaximun_baggage(e.target.value)
   }
 
   const handleDrivingSkill = (e) => {
@@ -66,17 +82,18 @@ function TripForm() {
   const uploadtrip = async () => {
     const tripData = {
       date,
-      departureTime,
-      availableSeats,
-      vehicleType,
-      favoriteGenre,
+      departure_time,
+      available_seats,
+      vehicle_type,
+      favorite_genre,
       lenguaje,
-      petAccepted,
-      maximumBaggage,
+      pets_accepted,
+      maximun_baggage,
       drivingSkill,
     };
     try {
       const res = await addtrip(tripData);
+      console.log(tripData)
       if (res === "success") {
         console.log("Viaje guardado exitosamente");
         Navigate('/')
@@ -113,10 +130,67 @@ function TripForm() {
           <Box sx={{ width: "50%" }}>
             <Grid
               container
-              rowSpacing={1}
+              rowSpacing={2}
               columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             >
               <Grid
+                item
+                xs={6}
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                }}
+              >
+                <FormControl sx={{ width: "60%" }} variant="outlined">
+                  <InputLabel id="select-label">Origin</InputLabel>
+                  <Select
+                    labelId="select-label"
+                    id="lenguaje-select"
+                    label="Origin"
+                    //onChange={handleOrigin}
+                  >
+                    <MenuItem value="es">Español</MenuItem>
+                    <MenuItem value="en">Inglés</MenuItem>
+                    <MenuItem value="de">Alemán</MenuItem>
+                    <MenuItem value="fr">Francés</MenuItem>
+                    <MenuItem value="it">Italiano</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+
+
+              <Grid
+                item
+                xs={6}
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                }}
+              >
+                <FormControl sx={{ width: "60%" }} variant="outlined">
+                  <InputLabel id="select-label">Destination</InputLabel>
+                  <Select
+                    labelId="select-label"
+                    id="lenguaje-select"
+                    label="Destination"
+                    //onChange={handleDestination}
+                  >
+                    <MenuItem value="es">Español</MenuItem>
+                    <MenuItem value="en">Inglés</MenuItem>
+                    <MenuItem value="de">Alemán</MenuItem>
+                    <MenuItem value="fr">Francés</MenuItem>
+                    <MenuItem value="it">Italiano</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+
+
+
+
+
+              <Grid
                 sx={{
                   display: "flex",
                   flexDirection: "row",
@@ -125,7 +199,7 @@ function TripForm() {
                 item
                 xs={6}
               >
-            <Calendar size='50%'onChange={handleDate}/>
+            <Calendar size='60%' handleDate={handleDate}  value={date} />
               </Grid>
 
               <Grid
@@ -137,16 +211,45 @@ function TripForm() {
                   justifyContent: "center",
                 }}
               >
-                <TextField
-                  sx={{ width: "50%" }}
-                  id="outlined-basic"
-                  label="Lenguaje"
-                  variant="outlined"
-                  onChange={handleLenguaje}
-                />
+                <FormControl sx={{ width: "60%" }} variant="outlined">
+                  <InputLabel id="select-label">Lenguaje</InputLabel>
+                  <Select
+                    labelId="select-label"
+                    id="lenguaje-select"
+                    label="Lenguaje"
+                    onChange={handleLenguaje}
+                  >
+                    <MenuItem value="es">Español</MenuItem>
+                    <MenuItem value="en">Inglés</MenuItem>
+                    <MenuItem value="de">Alemán</MenuItem>
+                    <MenuItem value="fr">Francés</MenuItem>
+                    <MenuItem value="it">Italiano</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
 
-              <Grid
+               <Grid
+                  item
+                  xs={6}
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <MobileTimePicker
+                      label="Departure time"
+                      sx={{ width: '60%' }}
+                      ampm={false}
+                      value={departure_time}
+                      onChange={handledeparture_time}
+                      
+                    />
+                  </LocalizationProvider>
+                </Grid> 
+
+              {/* <Grid
                 item
                 xs={6}
                 sx={{
@@ -160,9 +263,34 @@ function TripForm() {
                   id="outlined-basic"
                   label="Departure time"
                   variant="outlined"
-                  onChange={handleDepartureTime}
+                  onChange={handledeparture_time}
                 />
+              </Grid> */}
+
+              <Grid
+                item
+                xs={6}
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                }}
+              >
+                <FormControl sx={{ width: "60%" }} variant="outlined">
+                  <InputLabel id="select-label">Driving skill</InputLabel>
+                  <Select
+                    labelId="select-label"
+                    id="driving-skill-select"
+                    label="driving-skill"
+                    onChange={handleDrivingSkill}
+                  >
+                    <MenuItem value="Beginner">Beginner</MenuItem>
+                    <MenuItem value="Intermediate">Intermediate</MenuItem>
+                    <MenuItem value="Advanced">Advanced</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
+
 
               <Grid
                 sx={{
@@ -174,30 +302,64 @@ function TripForm() {
                 xs={6}
               >
                 <TextField
-                  sx={{ width: "50%" }}
-                  id="outlined-basic"
-                  label="Driving skill"
-                  variant="outlined"
-                  onChange={handleDrivingSkill}
-                />
-              </Grid>
-              <Grid
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                }}
-                item
-                xs={6}
-              >
-                <TextField
-                  sx={{ width: "50%" }}
+                  sx={{ width: "60%" }}
                   id="outlined-basic"
                   label="Avaible seats"
                   variant="outlined"
-                  onChange={handleAvailableSeats}
+                  onChange={handleavailable_seats}
                 />
               </Grid>
+
+              <Grid
+                item
+                xs={6}
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                }}
+              >
+                <FormControl sx={{ width: "60%" }} variant="outlined">
+                  <InputLabel id="select-label">Pets accepted</InputLabel>
+                  <Select
+                    labelId="select-label"
+                    id="choice-select"
+                    label="Choice"
+                    onChange={handlepets_accepted}
+                    value={pets_accepted === true ? "Yes" : "No"}
+                  >
+                    <MenuItem value="Yes">Yes</MenuItem>
+                    <MenuItem value="No">No</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+
+              <Grid
+                item
+                xs={6}
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                }}
+              >
+                <FormControl sx={{ width: "60%" }} variant="outlined">
+                  <InputLabel id="select-label">Vehicle type</InputLabel>
+                  <Select
+                    labelId="select-label"
+                    id="vehicle-type-select"
+                    label="vehicle-type"
+                    onChange={handlevehicle_type}
+                  >
+                    <MenuItem value="minivan">Minivan</MenuItem>
+                    <MenuItem value="SUV">SUV</MenuItem>
+                    <MenuItem value="off-road">Off-road</MenuItem>
+                    <MenuItem value="standard">Standard</MenuItem>
+                    <MenuItem value="family vehicle">Family vehicle</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+                  
               <Grid
                 sx={{
                   display: "flex",
@@ -208,63 +370,37 @@ function TripForm() {
                 xs={6}
               >
                 <TextField
-                  sx={{ width: "50%" }}
-                  id="outlined-basic"
-                  label="Pets accepted"
-                  variant="outlined"
-                  onChange={handlePetAccepted}
-                />
-              </Grid>
-              <Grid
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                }}
-                item
-                xs={6}
-              >
-                <TextField
-                  sx={{ width: "50%" }}
-                  id="outlined-basic"
-                  label="Vehicle type"
-                  variant="outlined"
-                  onChange={handleVehicleType}
-                />
-              </Grid>
-              <Grid
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                }}
-                item
-                xs={6}
-              >
-                <TextField
-                  sx={{ width: "50%" }}
+                  sx={{ width: "60%" }}
                   id="outlined-basic"
                   label="Maximum baggage"
                   variant="outlined"
-                  onChange={handleMaximumBaggage}
+                  onChange={handlemaximun_baggage}
                 />
               </Grid>
+              
               <Grid
+                item
+                xs={6}
                 sx={{
                   display: "flex",
                   flexDirection: "row",
                   justifyContent: "center",
                 }}
-                item
-                xs={6}
               >
-                <TextField
-                  sx={{ width: "50%" }}
-                  id="outlined-basic"
-                  label="Favorite genre"
-                  variant="outlined"
-                  onChange={handleFavoriteGenre}
-                />
+                <FormControl sx={{ width: "60%" }} variant="outlined">
+                  <InputLabel id="select-label">Gender</InputLabel>
+                  <Select
+                    labelId="select-label"
+                    id="gender-select"
+                    label="Gender"
+                    onChange={handlefavorite_genre}
+                    value={favorite_genre.toLowerCase()}
+                  >
+                    <MenuItem value="male">Male</MenuItem>
+                    <MenuItem value="female">Female</MenuItem>
+                    <MenuItem value="both">Both</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
             </Grid>
           </Box>
