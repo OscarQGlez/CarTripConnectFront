@@ -208,7 +208,7 @@ function TripForm() {
             color="secondary"
             sx={{ width: "100%" }}
           >
-            Update
+            Save trip
           </Button>
         </CardActions>
       </Card>
