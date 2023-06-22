@@ -35,7 +35,7 @@ export const deletetrip = async (id) => {
   }
 
 
-  export const getOrigin = async (originId) => {secure12345
+  export const getOrigin = async (originId) => {
     try {
       const { data } = await api.get(
         `/origin/${originId}`,
