@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
@@ -20,8 +20,8 @@ import { styled } from "@mui/material";
 import React from "react";
 import Calendar from "../Date/Date";
 import { addtrip } from "../../services/trip.services";
-// import { getOringin} from "../../services/trip.services"
-// import { getDestination} from "../../services/trip.services"
+import { getOrigin } from '../../services/trip.services'
+import { getDestination } from '../../services/trip.services'
 
 import { LocalizationProvider, MobileTimePicker, TimePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
@@ -39,8 +39,20 @@ function TripForm() {
   const [maximun_baggage, setmaximun_baggage] = useState("");
   const [drivingSkill, setDrivingSkill]  = useState("");
 
-  // const [origin, setorigin]  = useState("");
-  // const [destination, setDestination]  = useState("");
+  const [origin, setorigin]  = useState("");
+  const [destination, setDestination]  = useState("");
+
+  useEffect(()=>{
+    async function getLocation() {
+      try {
+        
+        
+      } catch (error) {
+        
+      }
+
+    }
+  },[])
 
   const handleDate = (e) => {
     setDate(`${e.$y}-${e.$M+1}-${e.$D}`)
