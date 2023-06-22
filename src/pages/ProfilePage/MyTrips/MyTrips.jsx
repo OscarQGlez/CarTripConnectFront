@@ -62,10 +62,10 @@ function MyTrips() {
             <p>Destination: {Data[0].destination}</p>
             <p>Departure time: {Data[0].departure_time.slice(0, 5)}</p>
             <p>Arrival time: {Data[0].arrival_time.slice(0, 5)}</p>
-            <p>Price: {Data[0].price}€</p>
+           
             <p>Driver's name: {Data[0].driver_name}</p>
-            <p>Score: {Data[0].score}</p>
-            <p>Profile: {Data[0].profile}</p>
+        
+        
             <p>Avaible seats: {Data[0].available_seats}</p>
           </Typography>
         </CardContent>

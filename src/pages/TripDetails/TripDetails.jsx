@@ -14,15 +14,13 @@ function TripDetails() {
   const Data = [
     {
       TripId: 1,
-      date: "21-07-23",
+      date: "23-07-23",
       departure_time: "10:00:00",
       arrival_time: "11:30:00",
       origin: "La Aldea",
       destination: "Telde",
-      price: "5",
       driver_name: "María",
-      score: "5",
-      profile: "verificado",
+    
       available_seats: 2,
     },
     {
@@ -35,7 +33,7 @@ function TripDetails() {
       price: "10",
       driver_name: "Andrés",
       score: "5",
-      profile: "verificado",
+      
       menssage: "",
       available_seats: 2,
     },
@@ -64,10 +62,9 @@ function TripDetails() {
             <p>Destination: {Data[0].destination}</p>
             <p>Departure time: {Data[0].departure_time.slice(0, 5)}</p>
             <p>Arrival time: {Data[0].arrival_time.slice(0, 5)}</p>
-            <p>Price: {Data[0].price}€</p>
+          
             <p>Driver's name: {Data[0].driver_name}</p>
-            <p>Score: {Data[0].score}</p>
-            <p>Profile: {Data[0].profile}</p>
+          
             <p>Avaible seats: {Data[0].available_seats}</p>
           </Typography>
         </CardContent>
