@@ -434,7 +434,7 @@ function TripForm() {
         </CardContent>
 
         <CardActions>
-          {/* <Link to= '/profilepage'> */}
+          <Link to= '/profilepage'>
             <Button
               size="large"
               variant="contained"
@@ -444,7 +444,7 @@ function TripForm() {
             >
               Publicar
             </Button>
-          {/* </Link> */}
+          </Link>
         </CardActions>
       </Card>
     </>
