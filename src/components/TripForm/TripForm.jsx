@@ -105,7 +105,6 @@ function TripForm() {
     }
   }
 
-
   return (
     <>
       <Card
