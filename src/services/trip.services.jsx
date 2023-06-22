@@ -1,9 +1,10 @@
 import { api } from "./api";
 
-export const addtrip = async ( date,departure,available_seats,vehicle_type,favorite_genre,
-    lenguaje,driving_skill,pets_accepted,maximun_baggage) => {
-    try {
-        const { data } = await api.post('/trip', {date,departure,available_seats,vehicle_type,favorite_genre, lenguaje,driving_skill,pets_accepted,maximun_baggage}, 
+export const addtrip = async ( body ) => {
+    try 
+    {
+      console.log(body)
+        const { data } = await api.post('/trip/offerTrip', body, 
         { headers: { token: localStorage.getItem('token') } } )
         return data
     } catch (error) {
@@ -58,7 +59,7 @@ export const deletetrip = async (id) => {
      }
    };
 
-export const getTrip = async (userId) => {
+   export const getTrip = async (userId) => {
   try {
     const { data } = await api.get(`/destination/${destinationId}`, {
       headers: { token: localStorage.getItem("token") },
@@ -67,4 +68,4 @@ export const getTrip = async (userId) => {
   } catch (error) {
     console.error("error al traer destino", error);
   }
-};
+

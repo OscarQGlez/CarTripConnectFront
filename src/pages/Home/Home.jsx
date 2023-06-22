@@ -60,21 +60,24 @@ function Home() {
           height: "100vh",
         }}
       >
-        <Container
-          sx={{
-            zIndex: "8",
-          }}
-        >
-          <SearchBar />
-          <Grid container position="relative" spacing={4} justify="center">
-            {" "}
-            {randomTripCards.map((card, index) => (
-              <Grid item xs={12} sm={3} md={3} key={index}>
-                <TripCard propCard={card} />
-              </Grid>
-            ))}
+        <Container sx={{
+            zIndex:"8"
+          }}>
+        <SearchBar/>
+        <Grid
+        container
+        position="relative"
+        spacing={4}
+        justify="center"
+      >  {randomTripCards.map((card, index) => (
+          <Grid item xs={12} sm={3} md={3} key={index}>
+            <TripCard propCard={card}/>
           </Grid>
-        </Container>
+      
+           ))}
+        </Grid>
+      </Container>
+      
       </Box>
     </>
   );
