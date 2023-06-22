@@ -19,7 +19,7 @@ import {
 import { styled } from "@mui/material";
 import React from "react";
 import Calendar from "../Date/Date";
-import { addtrip } from "../../services/trip.services";
+import { addtrip, getAllOrigin } from "../../services/trip.services";
 import { getOrigin } from '../../services/trip.services'
 import { getDestination } from '../../services/trip.services'
 
@@ -45,12 +45,12 @@ function TripForm() {
   useEffect(()=>{
     async function getLocation() {
       try {
-        
+        const tripLocationOrigin = getAllOrigin
         
       } catch (error) {
-        
+        console.error("Error al obtener las localizaciones de origen:", error);
       }
-
+      getLocation()
     }
   },[])
 

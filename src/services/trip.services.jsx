@@ -34,7 +34,6 @@ export const deletetrip = async (id) => {
     }
   }
 
-
   export const getOrigin = async (originId) => {
     try {
       const { data } = await api.get(
@@ -58,4 +57,23 @@ export const deletetrip = async (id) => {
        console.error("error al traer destino", error);
      }
    };
+
+   export const getAllOrigin = async () => {
+    try {
+        const { data } = await api.get('/origin', {headers: {token: localStorage.getItem( 'token' ) } } )
+        return data
+    } catch (error) {
+        console.error('error al ver todos las localizaciones de origen', error)
+    }
+  }
+
+    export const getAllDestination = async () => {
+      try {
+          const { data } = await api.get('/destination', {headers: {token: localStorage.getItem( 'token' ) } } )
+          return data
+      } catch (error) {
+          console.error('error al ver todos las localizacionesvde destinos', error)
+      }
+    }
+
 
