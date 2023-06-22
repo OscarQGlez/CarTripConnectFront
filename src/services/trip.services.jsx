@@ -58,3 +58,13 @@ export const deletetrip = async (id) => {
      }
    };
 
+export const getTrip = async (userId) => {
+  try {
+    const { data } = await api.get(`/destination/${destinationId}`, {
+      headers: { token: localStorage.getItem("token") },
+    });
+    return data;
+  } catch (error) {
+    console.error("error al traer destino", error);
+  }
+};

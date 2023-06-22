@@ -96,15 +96,17 @@ function LoginForm() {
       </CardContent>
 
       <CardActions>
-        <Button
-          variant="contained"
-          color="secondary"
-          sx={{ width: "100%" }}
-          onClick={logIn}
-        >
-          {" "}
-          Log In
-        </Button>
+        <Link to='/profilepage'>
+          <Button
+            variant="contained"
+            color="secondary"
+            sx={{ width: "100%" }}
+            onClick={logIn}
+          >
+            {" "}
+            Log In
+          </Button>
+        </Link>
       </CardActions>
 
       <Typography

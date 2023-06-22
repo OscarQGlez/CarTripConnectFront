@@ -1,5 +1,5 @@
-import React from 'react'
-import './TripDetails.css'
+import React from "react";
+import './MyTrips.css'
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -9,8 +9,7 @@ import Typography from "@mui/material/Typography";
 
 import { Link } from "react-router-dom";
 
-
-function TripDetails() {
+function MyTrips() {
   const Data = [
     {
       TripId: 1,
@@ -42,7 +41,7 @@ function TripDetails() {
   ];
   return (
     <>
-      <Card className="cardDetail" sx={{ maxWidth: 345 }}>
+      <Card className="myTrips" sx={{ maxWidth: 345 }}>
         <CardMedia
           sx={{ height: 140 }}
           image="https://unsplash.it/1000/450/?random"
@@ -71,20 +70,7 @@ function TripDetails() {
           </Typography>
         </CardContent>
       </Card>
-      <CardActions>
-        <Link to="/">
-          <Button
-            size="small"
-            variant="contained"
-            color="secondary"
-            sx={{ width: "100%", height: "100%" }}
-            className="h100"
-          >
-            Back
-          </Button>
-        </Link>
-      </CardActions>
     </>
   );
 }
-export default TripDetails
+export default MyTrips;
