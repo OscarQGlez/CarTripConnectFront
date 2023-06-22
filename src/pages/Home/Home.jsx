@@ -24,7 +24,6 @@ function Home() {
         const randomTrips = randomIndexArray.map(
           (index) => tripCards[index]
         );
-        //const shuffledCards = shuffleArray(tripCards); 
         setRandomTripCards(randomTrips);
       } catch (error) {
         console.error("Error al obtener las tarjetas:", error);
