@@ -56,29 +56,26 @@ function Home() {
       <Box
         className="herosection"
         sx={{
-          backgroundImage: `url(${img})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
-          height: "100vh"
+          height: "100vh",
         }}
       >
-        <Container sx={{
-            zIndex:"8"
-          }}>
-        <SearchBar/>
-        <Grid
-        container
-        position="relative"
-        spacing={4}
-        justify="center"
-      >  {randomTripCards.map((card, index) => (
-          <Grid item xs={12} sm={3} md={3} key={index}>
-            <TripCard propCard={card}/>
+        <Container
+          sx={{
+            zIndex: "8",
+          }}
+        >
+          <SearchBar />
+          <Grid container position="relative" spacing={4} justify="center">
+            {" "}
+            {randomTripCards.map((card, index) => (
+              <Grid item xs={12} sm={3} md={3} key={index}>
+                <TripCard propCard={card} />
+              </Grid>
+            ))}
           </Grid>
-      
-           ))}
-        </Grid>
-      </Container>
+        </Container>
       </Box>
     </>
   );

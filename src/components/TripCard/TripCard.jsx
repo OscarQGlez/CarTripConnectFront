@@ -31,7 +31,6 @@ export default function MediaCard({propCard}) {
         <CardMedia
           sx={{ height: 140 }}
           image="https://unsplash.it/1000/450/?random"
-          title="green iguana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
