@@ -4,6 +4,7 @@ import CustomTextField from '../CustomTextField/CustomTextField'
 import { useState } from 'react'
 import {login} from '../../services/auth.service'
 import { Email, Lock, Visibility, VisibilityOff } from '@mui/icons-material'
+import { Link } from 'react-router-dom'
 
 
 function LoginForm() {
@@ -40,63 +41,85 @@ function LoginForm() {
 
 
   return (
-    <Card sx={{
-      height: '350px',
-      width: '450px',
-      margin: '20px auto',
-      padding: '60px 68px 40px',
-      //backgroundColor: 'rgba(0 0 0 / .8)',
-      color: 'black'
-     }}>
+    <Card
+      sx={{
+        //   height: '350px',
+        //   width: '450px',
+        //   margin: '20px auto',
+        //   padding: '60px 68px 40px',
+        //   //backgroundColor: 'rgba(0 0 0 / .8)',
+        //   color: 'black'
+        //  }}
 
+        display: "flex",
+        flexDirection: "column",
+        paddingTop: "10px",
+
+        alignItems: "center",
+        height: "70vh",
+        width: "100vw",
+        marginTop: "150px",
+      }}
+    >
       <CardContent>
-        <Typography align='center' variant="h4" component="div">
+        <Typography align="center" variant="h4" component="div">
           Log in
         </Typography>
 
-        <Box sx={{ marginTop: '20px'}}>
-          <TextField 
-          fullWidth 
-          margin='dense' 
-          label="Email" 
-          variant="outlined" 
-          InputProps={{ startAdornment: <Email/> }}
-          onChange={handleEmail}>
-
-          </TextField>
-
-
-          <TextField 
+        <Box sx={{ marginTop: "20px" }}>
+          <TextField
             fullWidth
-            margin='dense' 
-            type={isPassVisible ? 'text':'password'}
+            margin="dense"
+            label="Email"
+            variant="outlined"
+            InputProps={{ startAdornment: <Email /> }}
+            onChange={handleEmail}
+          ></TextField>
+
+          <TextField
+            fullWidth
+            margin="dense"
+            type={isPassVisible ? "text" : "password"}
             label="Password"
-            variant="outlined" 
-            InputProps={{ 
-              startAdornment:<Lock/>,
+            variant="outlined"
+            InputProps={{
+              startAdornment: <Lock />,
               endAdornment: (
-              <IconButton onClick = {(e) => handleClickVisibility()}>
-                {isPassVisible ? <Visibility/>:<VisibilityOff/>}
-              </IconButton>
-              )
+                <IconButton onClick={(e) => handleClickVisibility()}>
+                  {isPassVisible ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              ),
             }}
             onChange={handlePassword}
-            ></TextField>
-            
-
+          ></TextField>
         </Box>
       </CardContent>
 
       <CardActions>
-        <Button variant="contained" color="secondary" sx={{ width: '100%'}} onClick={logIn}> Log In</Button>
+        <Link to='/profilepage'>
+          <Button
+            variant="contained"
+            color="secondary"
+            sx={{ width: "100%" }}
+            onClick={logIn}
+          >
+            {" "}
+            Log In
+          </Button>
+        </Link>
       </CardActions>
 
-
-      <Typography sx={{display: "flex", justifyContent: "center"}} variant="h8" >
-        Already have an account? Sign Up
+      <Typography
+        sx={{ display: "flex", justifyContent: "center" }}
+        variant="h8"
+      >
+        Already have an account?
+        <Link to="/signup">
+          <Button>Sign Up</Button>
+        </Link>
       </Typography>
     </Card>
-  )
+  );
 }
 
 export default LoginForm

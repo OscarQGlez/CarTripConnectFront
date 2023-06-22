@@ -1,0 +1,7 @@
+.cardDetail {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+   
+    margin: 15px auto;
+}

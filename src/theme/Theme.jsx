@@ -15,7 +15,7 @@ export const customTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: ["Arial", "Helvetica", "sans-serif"].join(","), 
+    fontFamily: ["Josefin Sans", "Arial", "Helvetica", "sans-serif" ].join(","), 
     fontSize: 12,
     fontStyle: "italic",
   },

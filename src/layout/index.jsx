@@ -2,10 +2,13 @@
 import { Outlet } from 'react-router-dom'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
+import CardDetails from '../components/SearchBar/SearchBar'
+import TripDetails from '../pages/TripDetails/TripDetails'
+import './layout.css'
 
 function Root() {
   return (
-    <div>
+    <div className='layout'>
         <Header />
         <Outlet/>
         <Footer/>
