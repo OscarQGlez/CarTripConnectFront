@@ -1,7 +1,14 @@
-import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import React from "react";
+import { useEffect, useState } from 'react';
+import {  Link } from "react-router-dom";
+import dayjs from "dayjs";
 
-import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
+
+import Calendar from "../Date/Date";
+import { addtrip, getAllDestination, getAllOrigin } from "../../services/trip.services";
+import { LocalizationProvider, MobileTimePicker, TimePicker } from "@mui/x-date-pickers";
+
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import {
   Button,
   Card,
@@ -16,34 +23,35 @@ import {
   MenuItem,
 
 } from "@mui/material";
-import { styled } from "@mui/material";
-import React from "react";
-import Calendar from "../Date/Date";
-import { addtrip } from "../../services/trip.services";
-// import { getOringin} from "../../services/trip.services"
-// import { getDestination} from "../../services/trip.services"
 
-import { LocalizationProvider, MobileTimePicker, TimePicker } from "@mui/x-date-pickers";
-import dayjs from "dayjs";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+
 
 function TripForm() {
-  const [date, setDate] = useState("");
-  const [departure_time, setdeparture_time] = useState(dayjs('2022-04-17T15:30'));
-  const [available_seats, setavailable_seats] = useState("");
+
+  const [date, setDate] = useState(dayjs('2023-06-02')); //dayjs('2023-06-02')
+  const [departure_time, setdeparture_time] = useState('');
+  const [available_seats, setavailable_seats] = useState(0);
   const [vehicle_type, setvehicle_type] = useState("");
 
   const [favorite_genre, setfavorite_genre] = useState("");
   const [lenguaje, setLenguaje] = useState("");
-  const [pets_accepted, setpets_accepted] = useState("");
+  const [pets_accepted, setpets_accepted] = useState();
   const [maximun_baggage, setmaximun_baggage] = useState("");
-  const [drivingSkill, setDrivingSkill]  = useState("");
+  const [driving_skill, setDrivingSkill]  = useState("");
+  //const [selectValue, setSelectValue] = useState('')
+  const [locationsDestination, setLocationsDestination] = useState([]);
+  const [locationsOrigin, setLocationsOrigin] = useState([]);
 
-  // const [origin, setorigin]  = useState("");
-  // const [destination, setDestination]  = useState("");
+  const [destinationId, setDestinationId] = useState([]);
+  const [originId, setOriginId] = useState([]);
+
 
   const handleDate = (e) => {
-    setDate(`${e.$y}-${e.$M+1}-${e.$D}`)
+    console.log(e.$D)
+    setDate(dayjs(`${e.$y}-${e.$M+1}-${e.$D}`).$d)
+    console.log(date)
+    //console.log(e)
+    //setDate(e)
   }
 
   const handledeparture_time = (e) => {
@@ -52,7 +60,7 @@ function TripForm() {
   }
 
   const handleavailable_seats = (e) => {
-    setavailable_seats(e.target.value)
+    setavailable_seats(parseInt(e.target.value))
   }
 
   const handlevehicle_type = (e) => {
@@ -79,6 +87,27 @@ function TripForm() {
     setDrivingSkill(e.target.value)
   }
 
+
+  const handleLocationChange = (event) => {
+    console.log(event.target.value)
+    setDestinationId(event.target.value);
+    // Manejar el cambio de la localización seleccionada
+    const selectedLocation = event.target.value;
+//    setSelectValue(event.target.value)
+    console.log('Localización destino seleccionada:', selectedLocation);
+  };
+
+  const handleLocationOriginChange = (event) => {
+    console.log(event.target.value)
+    setOriginId (event.target.value);
+    // Manejar el cambio de la localización seleccionada
+    const selectedLocation = event.target.value;
+//    setSelectValue(event.target.value)
+    console.log('Localización Origen seleccionada:', selectedLocation);
+  };
+
+
+
   const uploadtrip = async () => {
     const tripData = {
       date,
@@ -89,23 +118,42 @@ function TripForm() {
       lenguaje,
       pets_accepted,
       maximun_baggage,
-      drivingSkill,
+      driving_skill,
+      destinationId,
+      originId,
     };
     try {
       const res = await addtrip(tripData);
-      console.log(tripData)
-      if (res === "success") {
+        //console.log(tripData)
+        //console.log(res)
         console.log("Viaje guardado exitosamente");
-        Navigate('/')
-      } else {
-        console.log("Error al guardar el viaje");
-      } 
+        
+        
+      
     } catch (error) {
       console.log("Error al enviar la solicitud:", error);
     }
   }
 
+  useEffect(() => {
+      async function fetchLocations() {
+        try {
+          const destination = await getAllDestination() 
+          const origin = await getAllOrigin()
+          console.log(destination)
+          console.log(origin)
+          setLocationsOrigin(origin)
+          setLocationsDestination(destination)
+              
 
+        } catch (error) {
+          console.error('Error al obtener las localizaciones:', error);
+        }
+      }
+
+      fetchLocations();
+    }, []);
+    console.log(date)
   return (
     <>
       <Card
@@ -147,18 +195,18 @@ function TripForm() {
                   <Select
                     labelId="select-label"
                     id="lenguaje-select"
-                    label="Origin"
-                    //onChange={handleOrigin}
+                    label="Destination"
+                    onChange={handleLocationOriginChange}
+  
                   >
-                    <MenuItem value="es">Español</MenuItem>
-                    <MenuItem value="en">Inglés</MenuItem>
-                    <MenuItem value="de">Alemán</MenuItem>
-                    <MenuItem value="fr">Francés</MenuItem>
-                    <MenuItem value="it">Italiano</MenuItem>
+                  {locationsOrigin.map((location) => (
+                  <MenuItem key={location.id} value={location.id}>
+                    {location.location}
+                  </MenuItem>
+                ))}
                   </Select>
                 </FormControl>
               </Grid>
-
 
               <Grid
                 item
@@ -175,20 +223,17 @@ function TripForm() {
                     labelId="select-label"
                     id="lenguaje-select"
                     label="Destination"
-                    //onChange={handleDestination}
+                    onChange={handleLocationChange}
+                 
                   >
-                    <MenuItem value="es">Español</MenuItem>
-                    <MenuItem value="en">Inglés</MenuItem>
-                    <MenuItem value="de">Alemán</MenuItem>
-                    <MenuItem value="fr">Francés</MenuItem>
-                    <MenuItem value="it">Italiano</MenuItem>
+                  {locationsDestination.map((location) => (
+                  <MenuItem key={location.id} value={location.id}>
+                    {location.location}
+                  </MenuItem>
+                ))}
                   </Select>
                 </FormControl>
               </Grid>
-
-
-
-
 
               <Grid
                 sx={{
@@ -249,24 +294,6 @@ function TripForm() {
                   </LocalizationProvider>
                 </Grid> 
 
-              {/* <Grid
-                item
-                xs={6}
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                }}
-              >
-                <TextField
-                  sx={{ width: "50%" }}
-                  id="outlined-basic"
-                  label="Departure time"
-                  variant="outlined"
-                  onChange={handledeparture_time}
-                />
-              </Grid> */}
-
               <Grid
                 item
                 xs={6}
@@ -326,10 +353,10 @@ function TripForm() {
                     id="choice-select"
                     label="Choice"
                     onChange={handlepets_accepted}
-                    value={pets_accepted === true ? "Yes" : "No"}
+                    value={pets_accepted}
                   >
-                    <MenuItem value="Yes">Yes</MenuItem>
-                    <MenuItem value="No">No</MenuItem>
+                    <MenuItem value={true}>Yes</MenuItem>
+                    <MenuItem value={false}>No</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -407,15 +434,17 @@ function TripForm() {
         </CardContent>
 
         <CardActions>
-          <Button
-            size="large"
-            variant="contained"
-            color="secondary"
-            sx={{ width: "100%" }}
-            onClick={uploadtrip}
-          >
-            Publicar
-          </Button>
+          {/* <Link to= '/profilepage'> */}
+            <Button
+              size="large"
+              variant="contained"
+              color="secondary"
+              sx={{ width: "100%" }}
+              onClick={uploadtrip}
+            >
+              Publicar
+            </Button>
+          {/* </Link> */}
         </CardActions>
       </Card>
     </>

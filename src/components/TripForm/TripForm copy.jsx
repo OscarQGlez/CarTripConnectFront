@@ -77,11 +77,9 @@ function TripForm() {
     };
     try {
       const res = await addtrip(tripData);
-      if (res === "success") {
+     
         console.log("Viaje guardado exitosamente");
-        Navigate('/')
-      } else {
-        console.log("Error al guardar el viaje");
+        
       } 
     } catch (error) {
       console.log("Error al enviar la solicitud:", error);
