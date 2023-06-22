@@ -50,6 +50,7 @@ const showTrips = () => {
             <MyTrips key={idx} trip={trip} />
           )
         })*/}
+        <h1>My trips</h1>
         <MyTrips />
       </>
     );

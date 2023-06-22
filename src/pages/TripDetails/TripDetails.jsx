@@ -43,6 +43,7 @@ function TripDetails() {
   return (
     <>
       <Card className="cardDetail" sx={{ maxWidth: 345 }}>
+        <h1>Trips details</h1>
         <CardMedia
           sx={{ height: 140 }}
           image="https://unsplash.it/1000/450/?random"
