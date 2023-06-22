@@ -4,6 +4,7 @@ import CustomTextField from '../CustomTextField/CustomTextField'
 import { useState } from 'react'
 import {login} from '../../services/auth.service'
 import { Email, Lock, Visibility, VisibilityOff } from '@mui/icons-material'
+import { Link } from 'react-router-dom'
 
 
 function LoginForm() {
@@ -110,7 +111,10 @@ function LoginForm() {
         sx={{ display: "flex", justifyContent: "center" }}
         variant="h8"
       >
-        Already have an account? Sign Up
+        Already have an account?
+        <Link to="/signup">
+          <Button>Sign Up</Button>
+        </Link>
       </Typography>
     </Card>
   );
