@@ -13,7 +13,9 @@ import { getDestination } from '../../services/trip.services'
 function Home() {
   
   const [randomTripCards, setRandomTripCards] = useState([]);
-
+  const [locationOrigin, setLocationOrigin] = useState('')
+  const [locationDestination, setLocationDestination] = useState('')
+  const [dateCalendar, setDateCalendar] = = useState('')
   
   useEffect(() => {
    
@@ -50,6 +52,11 @@ function Home() {
     }
     return shuffledArray;
   }
+
+  console.log(locationOrigin)
+  console.log(locationDestination)
+  console.log(dateCalendar)
+
   return (
     <>
       <Box
@@ -63,13 +70,22 @@ function Home() {
         <Container sx={{
             zIndex:"8"
           }}>
-        <SearchBar/>
+        <SearchBar origin={setLocationOrigin} destination={setLocationDestination} />
         <Grid
         container
         position="relative"
         spacing={4}
         justify="center"
-      >  {randomTripCards.map((card, index) => (
+      >  {randomTripCards
+            .filter((trip)=>{
+              if ((locationOrigin.length>0) && (locationDestination.length>0)){
+                trip.origin.includes(locationOrigin)
+                trip.destination.includes(locationDestination)
+              } else {
+                return true
+              }
+            })
+            .map((card, index) => (
           <Grid item xs={12} sm={3} md={3} key={index}>
             <TripCard propCard={card}/>
           </Grid>

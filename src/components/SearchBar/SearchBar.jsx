@@ -9,6 +9,9 @@ import TripDetails from '../../pages/TripDetails/TripDetails'
 
 function SearchBar() {
 const [visible, setVisible] = useState('false')
+const [inputOrigin, setInputOrigin] = useState('')
+const [inputDestination, setInputDestination] = useState('')
+const [inputcalendar, setInputcalendar] = useState('')
 
 const showData = ()=> {
     return (
@@ -17,6 +20,20 @@ const showData = ()=> {
 }
 const handleSearch = () => {
     setVisible(!visible)
+    origin(inputOrigin)
+    origin(inputDestination)
+}
+
+const handleOriginInput = (e) => {
+  setInputOrigin(e.target.value)
+}
+
+const handleDestinationInput = (e) => {
+  setInputDestination(e.target.value)
+}
+
+const handlecalendar = (e) => {
+  setInputcalendar(e.target.value)
 }
 
   return (
@@ -35,9 +52,10 @@ const handleSearch = () => {
                 </Typography>
               </Grid>
             </Grid>
+
             <Card position="static" sx={{ padding: "10px" }}>
               <Grid container spacing={2} sx={{ backgroundColor: "white" }}>
-                <Grid item xs={3}>
+                <Grid item xs={4}>
                   <Typography
                     variant="h6"
                     component="div"
@@ -47,11 +65,12 @@ const handleSearch = () => {
                       variant="outlined"
                       placeholder="Origin"
                       className="formfield"
+                      onChange={handleOriginInput}
                     ></TextField>
                   </Typography>
                 </Grid>
 
-                <Grid item xs={3}>
+                <Grid item xs={4}>
                   <Typography
                     variant="h6"
                     component="div"
@@ -61,14 +80,15 @@ const handleSearch = () => {
                       variant="outlined"
                       placeholder="Destination"
                       className="formfield"
+                      onChange={handleDestinationInput}
                     />
                   </Typography>
                 </Grid>
 
-                <Grid item xs={3}>
-                  <Calendar className="formfield" />
+                <Grid item xs={2}>
+                  <Calendar className="formfield" onChange={handlecalendar}/>
                 </Grid>
-                <Grid item xs={1}>
+                {/* <Grid item xs={1}>
                   <Typography
                     className="cantidad-personas formfield"
                     variant="h6"
@@ -81,7 +101,7 @@ const handleSearch = () => {
                       placeholder="Number of persons"
                     />
                   </Typography>
-                </Grid>
+                </Grid> */}
 
                 <Grid item xs={2}>
                   <CardActions
