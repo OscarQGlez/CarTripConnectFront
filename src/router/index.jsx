@@ -9,6 +9,12 @@ import TripDetails from "../pages/TripDetails/TripDetails";
 import Home from "../pages/Home/Home";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 
+
+const checkLogin =() => {
+  if(!localStorage.getItem('token')) return redirect('/login')
+  else return null
+}
+
 export const router = createBrowserRouter([
   // { path: '/', element: <App/>}
   {
@@ -18,16 +24,18 @@ export const router = createBrowserRouter([
 
     children: [
       { path: "/", element: <Home /> },
-      { path: "/newtrip", element: <CreateTrips /> },
+      { path: "/newtrip", element: <CreateTrips />, loader: checkLogin },
       { path: "/signup", element: <Signup /> },
       {
         path: "/login",
         element: <LoginPage />,
+
       },
-      { path: "/tripdetail", element: <TripDetails /> },
+      { path: "/tripdetail", element: <TripDetails />, loader: checkLogin },
       {
         path: "/profilepage",
-        element: <ProfilePage />
+        element: <ProfilePage />,
+        loader: checkLogin
       },
     ],
   },

@@ -200,7 +200,7 @@ function TripForm() {
   
                   >
                   {locationsOrigin.map((location) => (
-                  <MenuItem key={location.id} value={location.id}>
+                  <MenuItem key={location.id} value={location.location}>
                     {location.location}
                   </MenuItem>
                 ))}
