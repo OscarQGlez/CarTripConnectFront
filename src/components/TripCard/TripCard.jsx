@@ -12,18 +12,17 @@ import { Link } from 'react-router-dom';
 export default function MediaCard({propCard}) {
 
     let [card, setCard] = useState(propCard)
-    console.log(card);
 
     useEffect(() => {
         async function getLocations(){
-            const destination = await getDestination(propCard.destinationId) 
+          /*   const destination = await getDestination(propCard.destinationId) 
             const origin = await getOrigin(propCard.originId)
             propCard.origin = origin.location
-            propCard.destination = destination.location
+            propCard.destination = destination.location */
             setCard({...propCard})
         }
         getLocations()
-    }, [])
+    }, [propCard])
     //console.log(card)
   return (
     <>
@@ -41,8 +40,8 @@ export default function MediaCard({propCard}) {
             color="text.secondary"
             sx={{ fontSize: "16px" }}
           >
-            <p>{card.origin}</p>
-            <p>{card.destination}</p>
+            <p>{card.origin.location}</p>
+            <p>{card.destination.location}</p>
             <p>{card.departure_time.slice(0, 5)}</p>
           </Typography>
         </CardContent>

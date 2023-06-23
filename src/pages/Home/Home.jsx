@@ -5,23 +5,26 @@ import {Button, CardActions, Typography, CardContent, Grid, Card, Container, Box
 import img from '../../assets/img/ilustracion.jpg'
 import TripCard from '../../components/TripCard/TripCard'
 import { useState, useEffect } from 'react' 
-import { getAlltrips } from '../../services/trip.services'
+import { getAlltrips, getAlltripsEager } from '../../services/trip.services'
 import { getOrigin } from '../../services/trip.services'
 import { getDestination } from '../../services/trip.services'
 
 
 function Home() {
   
+
+
   const [randomTripCards, setRandomTripCards] = useState([]);
   const [locationOrigin, setLocationOrigin] = useState('')
   const [locationDestination, setLocationDestination] = useState('')
-  const [dateCalendar, setDateCalendar] = = useState('')
+  const [tripsAll, setTripsAll]= useState([])
   
   useEffect(() => {
    
     async function fetchTripCards() {
       try {
-        const tripCards = await getAlltrips(); 
+        const tripCards = await getAlltripsEager(); 
+        setTripsAll(tripCards)
         const randomIndexArray = getRandomIndexArray(tripCards.length, 4);
         const randomTrips = randomIndexArray.map(
           (index) => tripCards[index]
@@ -53,10 +56,13 @@ function Home() {
     return shuffledArray;
   }
 
-  console.log(locationOrigin)
+  /* console.log(locationOrigin)
   console.log(locationDestination)
   console.log(dateCalendar)
+  console.log(randomTripCards) */
+  console.log(tripsAll)
 
+  
   return (
     <>
       <Box
@@ -65,6 +71,7 @@ function Home() {
           backgroundPosition: "center",
           backgroundSize: "cover",
           height: "100vh",
+          overflow: 'scroll'
         }}
       >
         <Container sx={{
@@ -76,22 +83,26 @@ function Home() {
         position="relative"
         spacing={4}
         justify="center"
-      >  {randomTripCards
-            .filter((trip)=>{
-              if ((locationOrigin.length>0) && (locationDestination.length>0)){
-                trip.origin.includes(locationOrigin)
-                trip.destination.includes(locationDestination)
-              } else {
-                return true
-              }
-            })
+      >  
+     {(locationOrigin.length!=0) ?
+          tripsAll.filter((trip)=>{             
+                console.log(trip.origin.location, locationOrigin, trip.origin.location.includes(locationOrigin))
+                return (trip.origin.location.includes(locationOrigin) /*&& trip.destination.includes(locationDestination)*/)
+              }).map((card, index) => (
+          <Grid item xs={12} sm={3} md={3} key={index}>
+            <TripCard propCard={card}/>
+          </Grid>      
+           )) : 
+           randomTripCards           
             .map((card, index) => (
           <Grid item xs={12} sm={3} md={3} key={index}>
             <TripCard propCard={card}/>
-          </Grid>
-      
-           ))}
+          </Grid>      
+           )) }
+
         </Grid>
+
+        
       </Container>
       
       </Box>
@@ -100,3 +111,4 @@ function Home() {
 }
 
 export default Home
+

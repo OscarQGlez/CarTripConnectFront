@@ -91,4 +91,14 @@ export const deletetrip = async (id) => {
       console.error("error al traer destino", error);
     }
   };
+
+
+  export const getAlltripsEager = async () => {
+    try {
+        const { data } = await api.get('/trip/eager', {headers: {token: localStorage.getItem( 'token' ) } } )
+        return data
+    } catch (error) {
+        console.error('error al ver todos los viajes', error)
+    }
+}
   

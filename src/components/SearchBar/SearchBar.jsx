@@ -1,27 +1,23 @@
 import React, { useState } from 'react'
 import "./SearchBar.css"
 import { Button, TextField, Typography, CardActions, Grid, Container, Card } from '@mui/material'
-import { Link } from 'react-router-dom'
+
 import Calendar from '../Date/Date'
-import TripDetails from '../../pages/TripDetails/TripDetails'
 
 
 
-function SearchBar() {
-const [visible, setVisible] = useState('false')
+
+function SearchBar({origin, destination}) {
+
 const [inputOrigin, setInputOrigin] = useState('')
 const [inputDestination, setInputDestination] = useState('')
 const [inputcalendar, setInputcalendar] = useState('')
 
-const showData = ()=> {
-    return (
-        <TripDetails/>
-    )
-}
+
 const handleSearch = () => {
-    setVisible(!visible)
+   
     origin(inputOrigin)
-    origin(inputDestination)
+    destination(inputDestination)
 }
 
 const handleOriginInput = (e) => {
@@ -87,21 +83,7 @@ const handlecalendar = (e) => {
 
                 <Grid item xs={2}>
                   <Calendar className="formfield" onChange={handlecalendar}/>
-                </Grid>
-                {/* <Grid item xs={1}>
-                  <Typography
-                    className="cantidad-personas formfield"
-                    variant="h6"
-                    component="div"
-                    sx={{ fontSize: "25px", flexGrow: 1 }}
-                  >
-                    <TextField
-                      className="formfield"
-                      variant="outlined"
-                      placeholder="Number of persons"
-                    />
-                  </Typography>
-                </Grid> */}
+                </Grid>           
 
                 <Grid item xs={2}>
                   <CardActions
