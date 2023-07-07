@@ -96,7 +96,7 @@ function LoginForm() {
       </CardContent>
 
       <CardActions>
-        <Link to='/profilepage'>
+        <Link to='/'>
           <Button
             variant="contained"
             color="secondary"

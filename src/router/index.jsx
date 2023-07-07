@@ -14,6 +14,10 @@ const checkLogin =() => {
   if(!localStorage.getItem('token')) return redirect('/login')
   else return null
 }
+const checkauth =() => {
+  if(localStorage.getItem('token')) return redirect('/')
+  else return null
+}
 
 export const router = createBrowserRouter([
   // { path: '/', element: <App/>}
@@ -23,12 +27,13 @@ export const router = createBrowserRouter([
     errorElement: <NotFound />,
 
     children: [
-      { path: "/", element: <Home /> },
+      { path: "/", element: <Home />, loader: checkLogin },
       { path: "/newtrip", element: <CreateTrips />, loader: checkLogin },
       { path: "/signup", element: <Signup /> },
       {
         path: "/login",
         element: <LoginPage />,
+        loader: checkauth
 
       },
       { path: "/tripdetail", element: <TripDetails />, loader: checkLogin },

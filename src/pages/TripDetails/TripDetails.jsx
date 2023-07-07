@@ -17,8 +17,8 @@ function TripDetails() {
       date: "23-07-23",
       departure_time: "10:00:00",
       arrival_time: "11:30:00",
-      origin: "La Aldea",
-      destination: "Telde",
+      origin: "Las Palmas de Gran Canaria",
+      destination: "el fondillo",
       driver_name: "María",
     
       available_seats: 2,

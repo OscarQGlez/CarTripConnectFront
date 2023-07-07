@@ -38,7 +38,6 @@ function TripForm() {
   const [pets_accepted, setpets_accepted] = useState();
   const [maximun_baggage, setmaximun_baggage] = useState("");
   const [driving_skill, setDrivingSkill]  = useState("");
-  //const [selectValue, setSelectValue] = useState('')
   const [locationsDestination, setLocationsDestination] = useState([]);
   const [locationsOrigin, setLocationsOrigin] = useState([]);
 
@@ -50,8 +49,7 @@ function TripForm() {
     console.log(e.$D)
     setDate(dayjs(`${e.$y}-${e.$M+1}-${e.$D}`).$d)
     console.log(date)
-    //console.log(e)
-    //setDate(e)
+
   }
 
   const handledeparture_time = (e) => {
@@ -123,9 +121,8 @@ function TripForm() {
       originId,
     };
     try {
+
       const res = await addtrip(tripData);
-        //console.log(tripData)
-        //console.log(res)
         console.log("Viaje guardado exitosamente");
         
         
@@ -154,6 +151,8 @@ function TripForm() {
       fetchLocations();
     }, []);
     console.log(date)
+
+
   return (
     <>
       <Card
@@ -434,7 +433,7 @@ function TripForm() {
         </CardContent>
 
         <CardActions>
-          <Link to= '/profilepage'>
+          <Link to= '/'>
             <Button
               size="large"
               variant="contained"

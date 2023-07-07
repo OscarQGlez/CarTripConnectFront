@@ -13,11 +13,11 @@ function MyTrips() {
   const Data = [
     {
       TripId: 1,
-      date: "21-07-23",
-      departure_time: "10:00:00",
-      arrival_time: "11:30:00",
-      origin: "La Aldea",
-      destination: "Telde",
+      date: "06-02-2023",
+      departure_time: "12:00:00",
+      arrival_time: "13:00:00",
+      origin: "Las Palmas de Gran Canaria",
+      destination: "el fondillo",
       price: "5",
       driver_name: "María",
       score: "5",
